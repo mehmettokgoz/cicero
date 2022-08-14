@@ -1,0 +1,43 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "Cicero Server REST API",
+      "description": "Exposes the Cicero Engine as a RESTful service.",
+      "termsOfService": "http://swagger.io/terms/",
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      },
+      "version": "0.23.0-alpha.1"
+    },
+    "externalDocs": {
+      "description": "GitHub link to Cicero Server repository.",
+      "url": "http://swagger.io"
+    },
+    "servers": [
+      {
+        "url": "https://localhost:6001"
+      }
+    ],
+    "tags": [
+      {
+        "name": "commands",
+        "description": "Everything about your Pets",
+        "externalDocs": {
+          "description": "Find out more",
+          "url": "http://swagger.io"
+        }
+      }
+    ],
+    "paths": {
+
+    },
+    "components": {
+      "schemas": {
+      },
+      "requestBodies": {
+      },
+      "securitySchemes": {
+      }
+    }
+  }

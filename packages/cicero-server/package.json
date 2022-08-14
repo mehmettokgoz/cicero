@@ -57,7 +57,9 @@
   "dependencies": {
     "@accordproject/cicero-core": "0.23.0-alpha.1",
     "@accordproject/cicero-engine": "0.23.0-alpha.1",
-    "express": "4.16.2"
+    "express": "4.16.2",
+    "swagger-autogen": "^2.21.5",
+    "swagger-ui-express": "^4.5.0"
   },
   "license-check-config": {
     "src": [

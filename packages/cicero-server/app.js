@@ -16,6 +16,9 @@
 
 'use strict';
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 const app = require('express')();
 const bodyParser = require('body-parser');
 const Template = require('@accordproject/cicero-core').Template;
@@ -172,8 +175,20 @@ async function initTemplateInstance(req) {
     return new Clause(template);
 }
 
+app.use(
+    '/docs',
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerDocument)
+);
+
+//const swaggerAutogen = require('swagger-autogen')()
+//const outputFile = './swagger_output.json'
+//const endpointsFiles = ['./app.js']
+//swaggerAutogen(outputFile, endpointsFiles)
+
 const server = app.listen(app.get('port'), function () {
     console.log('Server listening on port: ', app.get('port'));
+    console.log('Visit localhost:6001/docs/ to see documentations.')
 });
 
 module.exports = server;
