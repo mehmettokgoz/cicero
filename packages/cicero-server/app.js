@@ -17,7 +17,7 @@
 'use strict';
 
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('./swagger_output.json');
 
 const app = require('express')();
 const bodyParser = require('body-parser');
@@ -59,6 +59,9 @@ app.set('port', PORT);
  *
  */
 app.post('/trigger/:template', async function (req, httpResponse, next) {
+    /*  #swagger.tags = ['trigger']
+        #swagger.description = 'cicero trigger sends a request to the contract.'
+    */
     try {
         const clause = await initTemplateInstance(req);
 
@@ -108,6 +111,9 @@ app.post('/trigger/:template', async function (req, httpResponse, next) {
  *
  */
 app.post('/parse/:template', async function (req, httpResponse, next) {
+    /*  #swagger.tags = ['parse']
+        #swagger.description = 'cicero parse loads a template from a directory on disk and then parses input clause (or contract) text using the template.'
+    */
     try {
         const clause = await initTemplateInstance(req);
         if(Object.keys(req.body).length === 1 &&
@@ -145,6 +151,9 @@ app.post('/parse/:template', async function (req, httpResponse, next) {
  *
  */
 app.post('/draft/:template', async function (req, httpResponse, next) {
+    /*  #swagger.tags = ['draft']
+        #swagger.description = 'cicero draft creates contract text from data.'
+    */
     try {
         const clause = await initTemplateInstance(req);
         if(Object.keys(req.body).length === 1 &&
@@ -180,11 +189,6 @@ app.use(
     swaggerUi.serve, 
     swaggerUi.setup(swaggerDocument)
 );
-
-//const swaggerAutogen = require('swagger-autogen')()
-//const outputFile = './swagger_output.json'
-//const endpointsFiles = ['./app.js']
-//swaggerAutogen(outputFile, endpointsFiles)
 
 const server = app.listen(app.get('port'), function () {
     console.log('Server listening on port: ', app.get('port'));

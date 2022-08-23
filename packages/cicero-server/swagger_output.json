@@ -1,0 +1,156 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v0.23.0",
+    "title": "Cicero REST API Server",
+    "description": "Exposes the Cicero Engine as a RESTful service."
+  },
+  "host": "localhost:6001",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "draft"
+    },
+    {
+      "name": "parse"
+    },
+    {
+      "name": "invoke"
+    },
+    {
+      "name": "initialize"
+    },
+    {
+      "name": "trigger"
+    },
+    {
+      "name": "compile"
+    },
+    {
+      "name": "archive"
+    },
+    {
+      "name": "normalize"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/trigger/{template}": {
+      "post": {
+        "tags": [
+          "trigger"
+        ],
+        "description": "cicero trigger sends a request to the contract.",
+        "parameters": [
+          {
+            "name": "template",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "example": "any"
+                },
+                "request": {
+                  "example": "any"
+                },
+                "state": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/parse/{template}": {
+      "post": {
+        "tags": [
+          "parse"
+        ],
+        "description": "cicero parse loads a template from a directory on disk and then parses input clause (or contract) text using the template.",
+        "parameters": [
+          {
+            "name": "template",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "sample": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/draft/{template}": {
+      "post": {
+        "tags": [
+          "draft"
+        ],
+        "description": "cicero draft creates contract text from data.",
+        "parameters": [
+          {
+            "name": "template",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "example": "any"
+                },
+                "options": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
